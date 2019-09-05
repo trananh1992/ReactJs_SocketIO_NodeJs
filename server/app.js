@@ -68,6 +68,8 @@ app.post('/webhook',(req,res)=>{
       writeJson(JSON.stringify(data,null,2));
     })
   }
+
+  res.status(200).send('OK');
 })
 const getApiFB = async socket=>{
   fs.readFile('./fb.json',(err,fileData)=>{

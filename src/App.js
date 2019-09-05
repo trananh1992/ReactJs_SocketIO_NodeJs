@@ -6,14 +6,16 @@ class App extends Component {
     super(props)
     this.state= {
       response: false,
-      endpoint: 'http://127.0.0.1:4001'
+      endpoint: 'http://localhost:4001'
     };
   }
-  
+
   componentDidMount(){
     const {endpoint} = this.state;
     const socket = socketIOClient(endpoint);
-    socket.on('FromAPI',data => this.setState({response: data}));
+    socket.on('FromAPI',data => 
+      this.setState({response: data}
+    ));
   }
 
   render() {
@@ -22,7 +24,7 @@ class App extends Component {
         <div style={{ textAlign: "center" }}>
           {response
               ? <p>
-                The temperature in Ho Chi Minh is: {response} °F
+                {response.text}
               </p>
               : <p>Loading...</p>}
         </div>
